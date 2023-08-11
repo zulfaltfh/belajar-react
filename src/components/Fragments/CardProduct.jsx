@@ -2,11 +2,9 @@ import React, { Children } from 'react'
 import Button from '../Elements/Button';
 
 export default function CardProduct(props) {
-  
   const { children } = props;
-
   return (
-    <div className="w-80 max-w-sm bg-gray-800 border border-gray-200 rounded-lg shadow">
+    <div className="w-80 max-w-sm bg-gray-800 border border-gray-200 rounded-lg shadow mx-3">
       {children}
     </div>
   );
@@ -22,9 +20,7 @@ const Header = (props) => {
 };
 
 const Body = (props) => {
-
   const { children, title } = props;
-
   return (
     <div className="card-body px-5 pb-5">
       <a href="">
@@ -40,9 +36,7 @@ const Body = (props) => {
 };
 
 const Footer = (props) => {
-
   const { priceProduct } = props;
-
   return (
     <div className="card-footer flex items-center justify-between px-5 pb-5">
       <span className="text-xl font-bold text-white">{priceProduct}</span>
