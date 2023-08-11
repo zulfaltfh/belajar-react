@@ -4,7 +4,7 @@ import Button from '../Elements/Button';
 export default function CardProduct(props) {
   const { children } = props;
   return (
-    <div className="w-80 max-w-sm bg-gray-800 border border-gray-200 rounded-lg shadow mx-3">
+    <div className="w-80 max-w-sm bg-gray-800 border border-gray-200 rounded-lg shadow mx-3 flex flex-col justify-between">
       {children}
     </div>
   );
@@ -20,12 +20,12 @@ const Header = (props) => {
 };
 
 const Body = (props) => {
-  const { children, title } = props;
+  const { children, name } = props;
   return (
-    <div className="card-body px-5 pb-5">
+    <div className="card-body px-5 pb-5 h-full">
       <a href="">
         <h5 className="text-xl font-semibold tracking-tight text-white pb-2">
-          {title}
+          {name}
         </h5>
         <p className="text-sm text-white">
           {children}
