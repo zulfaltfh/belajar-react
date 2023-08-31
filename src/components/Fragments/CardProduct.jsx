@@ -1,10 +1,9 @@
-import React, { Children } from 'react'
 import Button from '../Elements/Button';
 
 export default function CardProduct(props) {
   const { children } = props;
   return (
-    <div className="w-80 max-w-sm bg-gray-800 border border-gray-200 rounded-lg shadow mx-3 flex flex-col justify-between">
+    <div className="w-72 max-w-xs bg-gray-800 border border-gray-200 rounded-lg shadow mx-3 my-2 flex flex-col justify-between">
       {children}
     </div>
   );
@@ -36,11 +35,11 @@ const Body = (props) => {
 };
 
 const Footer = (props) => {
-  const { priceProduct } = props;
+  const { priceProduct, handleAddToCart, id } = props;
   return (
     <div className="card-footer flex items-center justify-between px-5 pb-5">
-      <span className="text-xl font-bold text-white">{priceProduct}</span>
-      <Button className="bg-blue-600">Add To Cart</Button>
+      <span className="text-lg font-bold text-white">Rp {priceProduct.toLocaleString('id-ID', {styles:'currency', currency: 'IDR'})}</span>
+      <Button className="bg-blue-600" onClick={() => handleAddToCart(id)}>Add To Cart</Button>
     </div>
   );
 };

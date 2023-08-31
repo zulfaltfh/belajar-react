@@ -44,7 +44,7 @@ const Navigation = ({ type }) => {
     return(
       <p className='text-sm mt-5 text-center'>
         Already have an account?{" "}
-        <Link to="/login"className="font-bold text-blue-600">
+        <Link to="/login" className="font-bold text-blue-600">
           Login
         </Link>
       </p>
