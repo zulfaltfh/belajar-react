@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import Input from './Input'
 import Label from './Label'
 
-export default function InputForm(props) {
+const InputForm = forwardRef((props, ref) => {
 
-  const { name, label, type, placeholder } = props;
+  const { name, label, type, placeholder} = props;
 
   return (
     <div className="mb-6">
       <Label htmlFor={name}>{label}</Label>
-      <Input name={name} type={type} placeholder={placeholder} />
-      {/* jika tidak memiliki props children bisa dituliskan dengan langsung menambahkan slice closing tag */}
+      <Input name={name} type={type} placeholder={placeholder} ref={ref} />
     </div>
   )
-}
+})
+
+export default InputForm;

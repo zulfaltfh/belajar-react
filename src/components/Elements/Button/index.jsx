@@ -3,7 +3,7 @@ import React from 'react';
 export default function Button(props) {
   const { 
     children = "button", 
-    className = "bg-black", 
+    className = "bg-black text-white", 
     onClick = () => {}, 
     type = "button" } = props
   return (
