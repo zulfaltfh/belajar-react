@@ -2,13 +2,14 @@ import React, { Fragment, useEffect, useRef, useState } from 'react';
 import Button from '../components/Elements/Button';
 import CardProduct from '../components/Fragments/CardProduct';
 import { getProducts } from '../services/product.service';
-
-const email = localStorage.getItem('email');
+import { getUsername } from '../services/auth.service';
+import { useLogin } from '../hooks/useLogin';
 
 export default function ProductsPage() {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [products, setProducts] = useState([]);
+  const username = useLogin();
 
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem("cart")) || []);
@@ -32,9 +33,8 @@ export default function ProductsPage() {
   }, [cart]);
 
   const handleLogout = () => {
-    localStorage.removeItem('email');
-    localStorage.removeItem('password');
-    window.location.href = '/login';
+    localStorage.removeItem("token");
+    window.location.href = "/login";
   };
 
   const handleAddToCart = (id) => {
@@ -64,14 +64,14 @@ export default function ProductsPage() {
   return (
     <Fragment>
       <div className="navbar flex justify-end bg-blue-600 h-10 text-white items-center px-10 py-7">
-        {email}
+        {username}
         <Button className="bg-black ml-5" type="submit" onClick={handleLogout}>Logout</Button>
       </div>
       <div className="flex justify-center py-5">
-        <div clas-sName="w-4/6 flex flex-wrap ">
+        <div className="w-4/6 flex flex-wrap">
           {products.length > 0 && products.map((product) => (
             <CardProduct key={product.id}>
-              <CardProduct.Header image={product.image}/>
+              <CardProduct.Header image={product.image} id={product.id} />
               <CardProduct.Body name={product.title}>
                 {product.description}
               </CardProduct.Body>
@@ -79,7 +79,7 @@ export default function ProductsPage() {
             </CardProduct>
           ))}
         </div>
-        <div className="w-2/6">
+        <div>
             <h1 className="text-xl font-bold text-blue-700 ml-5 mb-2">Cart</h1>
             <table className="text-left table-auto border-separate border-spacing-x-5">
               <thead>
